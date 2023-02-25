@@ -28,9 +28,7 @@ class Homework {
     {   
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        //Square(n);
-        System.out.println();
-        
+
         int[][] matrix = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -39,23 +37,31 @@ class Homework {
         }
 
         long startTime = System.nanoTime();
-        for (int i = 0; i < n; i++) {
-            StringBuilder rowString = new StringBuilder();
-            StringBuilder colString = new StringBuilder();
-            for (int j = 0; j < n; j++) {
-                rowString.append(matrix[i][j]);
-                colString.append(matrix[j][i]);
+
+        for (int i = 0; i < n; i++) { 
+            String rowString = "Row " + (i+1) + ": "; 
+            String colString = "Col " + (i+1) + ": "; 
+
+            for (int j = 0; j < n; j++) { 
+                rowString += matrix[i][j]; 
+                colString += matrix[j][i]; 
             }
-            System.out.println("Row " + (i+1) + ": " + rowString.toString());
-            System.out.println("Col " + (i+1) + ": " + colString.toString());
+
+            System.out.println(rowString); 
+            System.out.println(colString); 
+
         }
-        long endTime = System.nanoTime();
-        long elapsedTime = endTime - startTime;
-        if (elapsedTime < 1000000) {
-            System.out.println("Elapsed time: " + elapsedTime + " ns");
-        } else {
-            System.out.println("Elapsed time: " + elapsedTime / 1000000 + " ms");
-        }
-    }
+
+        long endTime = System.nanoTime(); 
+
+        long elapsedTime = endTime - startTime; 
+
+        if (elapsedTime < 1000000) { 
+            System.out.println("Elapsed time: " + elapsedTime + " ns"); 
+        } else { 
+            System.out.println("Elapsed time: " + elapsedTime / 1000000 + " ms"); 
+        }  
+
+    }  
     
 }
