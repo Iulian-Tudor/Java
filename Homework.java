@@ -43,8 +43,8 @@ class Homework {
             StringBuilder rowString = new StringBuilder();
             StringBuilder colString = new StringBuilder();
             for (int j = 0; j < n; j++) {
-                rowString.append(matrix[i][j]).append(" ");
-                colString.append(matrix[j][i]).append(" ");
+                rowString.append(matrix[i][j]);
+                colString.append(matrix[j][i]);
             }
             System.out.println("Row " + (i+1) + ": " + rowString.toString());
             System.out.println("Col " + (i+1) + ": " + colString.toString());
