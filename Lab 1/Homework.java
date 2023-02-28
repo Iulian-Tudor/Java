@@ -62,6 +62,7 @@ class Homework {
             System.out.println("Elapsed time: " + elapsedTime / 1000000 + " ms"); 
         }  
 
+        sc.close();
     }  
     
 }
