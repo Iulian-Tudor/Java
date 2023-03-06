@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class CycleGraph {
@@ -35,7 +34,7 @@ public class CycleGraph {
     public static int[][] power(int[][] A, int n) {
         int[][] result = new int[A.length][A[0].length];
         for (int i = 0; i < A.length; i++) {
-            result[i][i] = 1; // Initialize result to identity matrix
+            result[i][i] = 1;
         }
         while (n > 0) {
             if (n % 2 == 1) {
@@ -47,7 +46,7 @@ public class CycleGraph {
         return result;
     }
 
-    // Multiply two matrices and return the result
+
     public static int[][] multiply(int[][] A, int[][] B) {
         int[][] C = new int[A.length][B[0].length];
         for (int i = 0; i < A.length; i++) {
@@ -60,7 +59,6 @@ public class CycleGraph {
         return C;
     }
 
-    // Print a matrix to console
     public static void printMatrix(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {

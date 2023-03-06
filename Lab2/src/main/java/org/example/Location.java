@@ -32,13 +32,8 @@ public abstract class Location {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Location location = (Location) o;
-
-        if (Double.compare(location.x, x) != 0) return false;
-        if (Double.compare(location.y, y) != 0) return false;
-        if (!name.equals(location.name)) return false;
+        if (!(o instanceof Location location)) return false;
+        if (Double.compare(location.x, x) == 0 && Double.compare(location.y, y) == 0 && (!name.equals(location.name))) return false;
         return type == location.type;
     }
 

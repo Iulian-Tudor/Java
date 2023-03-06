@@ -1,9 +1,27 @@
 package org.example;
 
 public abstract class Road {
-    private RoadType type;
-    private double length;
-    private double speedLimit;
+    protected RoadType type;
+    protected double length;
+    protected double speedLimit;
+    protected Location startLocation;
+    protected Location endLocation;
+
+    public Location getEndLocation() {
+        return endLocation;
+    }
+
+    public void setEndLocation(Location endLocation) {
+        this.endLocation = endLocation;
+    }
+
+    public Location getStartLocation() {
+        return startLocation;
+    }
+
+    public void setStartLocation(Location startLocation) {
+        this.startLocation = startLocation;
+    }
 
     public Road(RoadType type, double length, double speedLimit) {
         this.type = type;
@@ -29,9 +47,7 @@ public abstract class Road {
         if (o == null || getClass() != o.getClass()) return false;
 
         Road road = (Road) o;
-
-        if (Double.compare(road.length, length) != 0) return false;
-        if (Double.compare(road.speedLimit, speedLimit) != 0) return false;
+        if ((Double.compare(road.length, length) == 0) && (Double.compare(road.speedLimit, speedLimit) == 0)) return false;
         return type == road.type;
     }
 
@@ -50,6 +66,17 @@ public abstract class Road {
     @Override
     public String toString() {
         return type + " (" + length + " km, " + speedLimit + " km/h)";
+    }
+
+    public Location getOtherLocation(Location location) {
+        if (location.equals(startLocation)) {
+            return endLocation;
+        } else if (location.equals(endLocation)) {
+            return startLocation;
+        } else {
+            // Location 404
+            return null;
+        }
     }
 }
 
