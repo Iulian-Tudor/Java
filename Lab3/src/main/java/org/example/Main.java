@@ -1,37 +1,38 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<Node> nodes = new ArrayList<>();
-        Person ion = new Person("Ion");
-        Person vasile = new Person("vasile");
-        Person tudor = new Person("Tudor");
-        Company google = new Company("Google");
-        Company microsoft = new Company("Microsoft");
 
-        ion.addFriend(vasile);
-        vasile.addFriend(tudor);
-        tudor.addFriend(ion);
+        Network network = new Network();
 
-        google.addEmployee(ion);
-        google.addEmployee(vasile);
-        microsoft.addEmployee(tudor);
+        Person ion = new Person("ion", new Date());
+        Person bob = new Person("Bob", new Date());
+        Programmer iulian = new Programmer("iulian", new Date(), "Java");
+        Designer vasile = new Designer("vasile", new Date(), "UI/UX");
 
-        nodes.add(ion);
-        nodes.add(vasile);
-        nodes.add(tudor);
-        nodes.add(google);
-        nodes.add(microsoft);
+        Company Companie1 = new Company("Companie1");
+        Company Companie2 = new Company("Companie2 Inc.");
 
-        Collections.sort(nodes, Comparator.comparing(Node::getName));
+        network.addNode(ion);
+        network.addNode(bob);
+        network.addNode(iulian);
+        network.addNode(vasile);
+        network.addNode(Companie1);
+        network.addNode(Companie2);
 
-        for (Node node : nodes) {
-            System.out.println(node.getName());
-        }
+        ion.addRelationship(bob, "Friend");
+        ion.addRelationship(iulian, "Co-worker");
+        bob.addRelationship(iulian, "Co-worker");
+        iulian.addRelationship(Companie1, "Employer");
+        vasile.addRelationship(Companie2, "Employer");
+
+        Companie1.addEmployee(iulian, "Programmer");
+        Companie2.addEmployee(vasile, "Designer");
+
+        network.printNetwork();
+
+
     }
 }
