@@ -1,0 +1,19 @@
+"C:\Program Files\Eclipse Adoptium\jdk-17.0.6.10-hotspot\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.3.2\lib\idea_rt.jar=56476:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.3.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Users\scuta\Desktop\Java Labs\Java\Lab4\target\classes;C:\Users\scuta\.m2\repository\com\github\javafaker\javafaker\1.0.1\javafaker-1.0.1.jar;C:\Users\scuta\.m2\repository\org\apache\commons\commons-lang3\3.5\commons-lang3-3.5.jar;C:\Users\scuta\.m2\repository\org\yaml\snakeyaml\1.23\snakeyaml-1.23-android.jar;C:\Users\scuta\.m2\repository\com\github\mifmif\generex\1.0.2\generex-1.0.2.jar;C:\Users\scuta\.m2\repository\dk\brics\automaton\automaton\1.11-8\automaton-1.11-8.jar;C:\Users\scuta\.m2\repository\org\webjars\bower\Faker\3.0.1\Faker-3.0.1.jar" org.example.Main
+
+
+Student{name='Miss William Lang', admissibleProjects=[Project{name='Ego Dominus Tuus'}, Project{name='East of Eden'}]}
+Student{name='Verla Mante', admissibleProjects=[Project{name='Ego Dominus Tuus'}, Project{name='East of Eden'}]}
+Student{name='Lauren Shields', admissibleProjects=[Project{name='To Say Nothing of the Dog'}]}
+Student{name='Jasper Baumbach III', admissibleProjects=[Project{name='O Pioneers!'}, Project{name='East of Eden'}]}
+Student{name='Dolly Kuphal', admissibleProjects=[Project{name='East of Eden'}]}
+Student{name='Miss Miguel Terry', admissibleProjects=[Project{name='As I Lay Dying'}, Project{name='Ego Dominus Tuus'}]}
+Student{name='Alphonso Pouros PhD', admissibleProjects=[Project{name='East of Eden'}]}
+Student{name='Crystal Borer', admissibleProjects=[Project{name='As I Lay Dying'}, Project{name='Ego Dominus Tuus'}]}
+Student{name='Shea Huel', admissibleProjects=[Project{name='To Say Nothing of the Dog'}, Project{name='Ego Dominus Tuus'}]}
+Student{name='Marcelina Jaskolski', admissibleProjects=[Project{name='East of Eden'}]}
+Student{name='Lauren Shields', admissibleProjects=[Project{name='To Say Nothing of the Dog'}]}
+Student{name='Dolly Kuphal', admissibleProjects=[Project{name='East of Eden'}]}
+Student{name='Alphonso Pouros PhD', admissibleProjects=[Project{name='East of Eden'}]}
+Student{name='Marcelina Jaskolski', admissibleProjects=[Project{name='East of Eden'}]}
+
+Process finished with exit code 0

@@ -1,0 +1,9 @@
+"C:\Program Files\Eclipse Adoptium\jdk-17.0.6.10-hotspot\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.3.2\lib\idea_rt.jar=59026:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.3.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Users\scuta\Desktop\Java Labs\Java\Lab4\target\classes" org.example.Main
+Student{name='S0', admissibleProjects=[Project{name='P1'}, Project{name='P2'}, Project{name='P0'}]}
+Student{name='S1', admissibleProjects=[Project{name='P0'}, Project{name='P1'}]}
+Student{name='S2', admissibleProjects=[Project{name='P0'}]}
+Project{name='P0'}
+Project{name='P1'}
+Project{name='P2'}
+
+Process finished with exit code 0

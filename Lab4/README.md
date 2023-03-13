@@ -1,5 +1,5 @@
 Lab 4
 
-* [ ] Compulsory
-* [ ] Homework
+* [x] Compulsory
+* [x] Homework
 * [ ] Bonus
