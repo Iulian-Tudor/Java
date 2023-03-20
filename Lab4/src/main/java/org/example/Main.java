@@ -38,11 +38,11 @@ public class Main {
         public static void main(String[] args) {
             StudentProjectMatcher matcher = new StudentProjectMatcher(NUM_STUDENTS, NUM_PROJECTS, MAX_PREFS);
 
-            // get and print the students with lower preferences
+            // < than average
             List<Student> studentsWithLowerPrefs = matcher.getStudentsWithLowerPreferences();
             studentsWithLowerPrefs.forEach(System.out::println);
 
-            // match the students to the projects and print the matches
+            // cuplaje
             Map<Student, Project> matches = matcher.match();
             matches.forEach((student, project) -> System.out.println(student.getName() + " -> " + project.getName()));
         }

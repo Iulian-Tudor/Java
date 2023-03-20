@@ -1,9 +1,14 @@
+import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.io.File;
 import java.io.IOException;
+
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -44,8 +49,14 @@ public class Catalog {
 
     public static Catalog load(String fileName) {
         try {
+
+            byte[] mapData = Files.readAllBytes(Paths.get("catalog.json"));
+            Map<String,String> myMap = new HashMap<String, String>();
             ObjectMapper mapper = new ObjectMapper();
-            return mapper.readValue(new File(fileName), Catalog.class);
+            myMap = mapper.readValue(mapData, HashMap.class);
+            //return mapper.readValue(new File(fileName), Catalog.class);
+            System.out.println(myMap);
+
         } catch (JsonParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -76,6 +87,6 @@ public class Catalog {
         System.out.println(catalog.toString());
         catalog.save("catalog.json");
         Catalog loadedCatalog = Catalog.load("catalog.json");
-        System.out.println(loadedCatalog.toString());
+        //System.out.println(loadedCatalog.toString());
     }
 }
