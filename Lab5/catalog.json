@@ -1,0 +1,1 @@
+{"documents":[{"id":"doc1","name":"Document 1","location":"/path/to/doc1","tags":{"tag1":"value1","tag2":"value2"}},{"id":"doc2","name":"Document 2","location":"http://example.com/doc2","tags":{"tag3":"value3"}}]}

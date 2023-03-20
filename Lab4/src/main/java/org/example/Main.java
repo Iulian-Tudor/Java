@@ -1,10 +1,8 @@
 package org.example;
 
-import com.github.javafaker.Faker;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 
 // Compulsory Main
@@ -38,42 +36,18 @@ public class Main {
         private static final int MAX_PREFS = 3;
 
         public static void main(String[] args) {
-            List<Student> students = generateStudents(NUM_STUDENTS, NUM_PROJECTS, MAX_PREFS);
-            students.forEach(System.out::println);
+            StudentProjectMatcher matcher = new StudentProjectMatcher(NUM_STUDENTS, NUM_PROJECTS, MAX_PREFS);
 
-            List<Student> studentsWithFewerPrefs = getStudentsWithFewerPreferences(students);
-            studentsWithFewerPrefs.forEach(System.out::println);
+            // get and print the students with lower preferences
+            List<Student> studentsWithLowerPrefs = matcher.getStudentsWithLowerPreferences();
+            studentsWithLowerPrefs.forEach(System.out::println);
+
+            // match the students to the projects and print the matches
+            Map<Student, Project> matches = matcher.match();
+            matches.forEach((student, project) -> System.out.println(student.getName() + " -> " + project.getName()));
         }
 
-        private static List<Student> generateStudents(int numStudents, int numProjects, int maxPrefs) {
-            Faker faker = new Faker();
-            List<Project> projects = Stream.generate(() -> new Project(faker.book().title())).limit(numProjects).collect(Collectors.toList());
 
-            //genereaza random studenti si preferinte
-            List<Student> students = new ArrayList<>();
-            for (int i = 0; i < numStudents; i++) {
-                Set<Project> prefs = new HashSet<>();
-                int numPrefs = faker.random().nextInt(maxPrefs) + 1;
-                for (int j = 0; j < numPrefs; j++) {
-                    prefs.add(projects.get(faker.random().nextInt(numProjects)));
-                }
-                students.add(new Student(faker.name().fullName(), prefs));
-            }
-
-            return students;
-        }
-
-        //selecteaza studentii sub medie
-        private static List<Student> getStudentsWithFewerPreferences(List<Student> students) {
-            double avgPrefs = students.stream()
-                    .mapToDouble(student -> student.getAdmissibleProjects().size()) //creaza map de tip student - nr.pref
-                    .average()
-                    .orElse(0.0); //in caz in care nu sunt stundeti
-
-            return students.stream()
-                    .filter(student -> student.getAdmissibleProjects().size() < avgPrefs)
-                    .collect(Collectors.toList());
-        }
     }
 
 
