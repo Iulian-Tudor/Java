@@ -26,6 +26,7 @@ public class Catalog {
         documents.add(doc);
     }
 
+    /*
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Catalog:\n");
@@ -63,7 +64,7 @@ public class Catalog {
             e.printStackTrace();
         }
         return null;
-    }
+    } */
 
     public void setTag(String name, String value) {
         tags.put(name, value);
@@ -78,15 +79,47 @@ public class Catalog {
     }
 
     public static void main(String[] args) {
+
+        // Create a new catalog
         Catalog catalog = new Catalog();
-        Document doc1 = new Document("doc1", "Document 1", "/path/to/doc1", "tag1:value1", "tag2:value2");
-        Document doc2 = new Document("doc2", "Document 2", "http://example.com/doc2", "tag3:value3");
-        catalog.add(doc1);
-        catalog.add(doc2);
-        catalog.setTag("category", "books");
-        System.out.println(catalog.toString());
-        catalog.save("catalog.json");
-        Catalog loadedCatalog = Catalog.load("catalog.json");
-        //System.out.println(loadedCatalog.toString());
+
+        // Create some new documents and add them to the catalog
+        Document doc1 = new Document("1", "Document 1", "/path/to/doc1", "author:John Doe", "type:pdf");
+        Document doc2 = new Document("2", "Document 2", "/path/to/doc2", "author:Jane Smith", "type:doc");
+        Document doc3 = new Document("3", "Document 3", "/path/to/doc3", "author:John Doe", "type:pdf");
+        try {
+            CatalogueManager.add(doc1, catalog);
+            CatalogueManager.add(doc2, catalog);
+            CatalogueManager.add(doc3, catalog);
+        } catch (CatalogueManager.DocumentNullException | CatalogueManager.CatalogNullException e) {
+            e.printStackTrace();
+        }
+
+        // Print out the catalog
+        try {
+            System.out.println(CatalogueManager.catalogToString(catalog));
+        } catch (CatalogueManager.CatalogNullException e) {
+            e.printStackTrace();
+        }
+
+        // Add some tags to the catalog
+        catalog.setTag("owner", "Alice");
+        catalog.setTag("department", "Marketing");
+
+        // Save the catalog to a file
+        try {
+            CatalogueManager.save(catalog, "catalog2.json");
+        } catch (CatalogueManager.CatalogNullException | CatalogueManager.CatalogSaveException e) {
+            e.printStackTrace();
+        }
+
+        // Load the catalog from a file
+        Catalog loadedCatalog = null;
+        try {
+            loadedCatalog = CatalogueManager.load("catalog2.json");
+        } catch (CatalogueManager.CatalogLoadException e) {
+            e.printStackTrace();
+        }
+
     }
 }
