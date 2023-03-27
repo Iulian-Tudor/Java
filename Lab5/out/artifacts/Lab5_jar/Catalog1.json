@@ -1,0 +1,6 @@
+[ {
+  "id" : "123",
+  "name" : "DOcument1",
+  "location" : "path/to/doc.pdf",
+  "tags" : { }
+} ]

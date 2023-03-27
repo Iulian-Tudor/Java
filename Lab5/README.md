@@ -4,5 +4,5 @@ Lab 5
 * [x] Optional
   * [x] 1
   * [x] 2
-  * [ ] 3
+  * [x] 3
 * [ ] Bonus
