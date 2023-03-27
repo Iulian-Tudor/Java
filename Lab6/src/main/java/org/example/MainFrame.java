@@ -2,7 +2,9 @@ package org.example;
 
 import javax.swing.*;
 
-import static javax.swing.SwingConstants.CENTER;
+import java.awt.*;
+
+import static javax.swing.SwingConstants.*;
 
 public class MainFrame extends JFrame {
     ConfigPanel configPanel;
@@ -23,7 +25,12 @@ public class MainFrame extends JFrame {
 
         //arrange the components in the container (frame)
         //JFrame uses a BorderLayout by default
-        add(canvas, CENTER); //this is BorderLayout.CENTER
+        add(canvas, BorderLayout.CENTER); //this is BorderLayout.CENTER
+        ConfigPanel config = new ConfigPanel(this);
+        add(config,BorderLayout.NORTH);
+
+        ControlPanel control = new ControlPanel(this);
+        add(control,BorderLayout.SOUTH);
 
 
         //invoke the layout manager
