@@ -1,0 +1,17 @@
+[ {
+  "id" : "123",
+  "name" : "MyDocument",
+  "location" : "path/to/document.pdf",
+  "tags" : {
+    "year" : "2000",
+    "author" : "Myself"
+  }
+}, {
+  "id" : "345",
+  "name" : "MyDocument2",
+  "location" : "path/to/document2.pdf",
+  "tags" : {
+    "year" : "2002",
+    "author" : "Someone"
+  }
+} ]

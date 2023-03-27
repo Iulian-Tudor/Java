@@ -42,7 +42,7 @@ public class CatalogueManager {
         if (catalog == null) {
             throw new CatalogNullException();
         }
-        catalog.add(doc);
+        catalog.addDocument(doc);
     }
 
     public static String catalogToString(Catalog catalog) throws CatalogNullException {
