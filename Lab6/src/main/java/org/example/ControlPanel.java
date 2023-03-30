@@ -21,13 +21,9 @@ public class ControlPanel extends JPanel {
         add(loadBtn);
         add(saveBtn);
         add(resetBtn);
-        //configure listeners for all buttons
-        exitBtn.addActionListener(this::exitGame);
 
     }
-    private void exitGame(ActionEvent e) {
-        frame.dispose();
-    }
+
 
 }
 
