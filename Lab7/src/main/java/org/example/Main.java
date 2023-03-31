@@ -7,16 +7,15 @@ public class Main {
     public static void main(String[] args) {
         int n = 10;
         int numRobots = 5;
-        int timeLimit = 600; // time limit in seconds
+        int timeLimit = 5; // time limit in seconds
 
         Map map = new Map(n);
         Supervisor supervisor = new Supervisor(numRobots, map);
-        supervisor.start();
+
 
         AtomicBoolean isTimeUp = new AtomicBoolean(false);
         Timekeeper timekeeper = new Timekeeper(timeLimit, isTimeUp);
         timekeeper.setDaemon(true);
-        timekeeper.start();
 
         Scanner scanner = new Scanner(System.in);
         while (!map.isCompleted() && !isTimeUp.get()) {
@@ -25,6 +24,7 @@ public class Main {
             if (tokens[0].equals("start")) {
                 if (tokens.length == 1) {
                     supervisor.start();
+                    timekeeper.start();
                 } else if (tokens.length == 2) {
                     int robotIndex = Integer.parseInt(tokens[1]);
                     Robot robot = supervisor.getRobot(robotIndex);
