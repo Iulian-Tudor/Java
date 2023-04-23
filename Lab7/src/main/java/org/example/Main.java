@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         int n = 10;
         int numRobots = 5;
-        int timeLimit = 5; // time limit in seconds
+        int timeLimit = 10; // time limit in seconds
 
         Map map = new Map(n);
         Supervisor supervisor = new Supervisor(numRobots, map);
@@ -57,6 +57,10 @@ public class Main {
                 }
             } else {
                 System.out.println("Invalid command");
+            }
+
+            if (map.isCompleted()) {
+                System.out.println("All cells have been visited!");
             }
         }
 
