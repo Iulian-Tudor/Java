@@ -22,10 +22,10 @@ public class Test {
         Connection connection = dataSource.getConnection();
 
         GenreDAO genreDAO = new GenreDAO(connection);
-        genreDAO.addGenre("Test1");
+        genreDAO.addGenre("TestLab");
 
         AlbumDAO albumDAO = new AlbumDAO(connection);
-        albumDAO.addAlbum(2428, "In the Future", 3, new String[]{"Test1"});
+        albumDAO.addAlbum(1000, "This is a test", 3, new String[]{"TestLab"});
 
         // Close the connection and the pool
         connection.close();
