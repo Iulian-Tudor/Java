@@ -37,7 +37,7 @@ public class PlaylistGenerator {
         List<Album> relatedAlbums = new ArrayList<>();
 
         String sql = "SELECT * FROM albums " +
-                "WHERE (artist_id = ? OR release_year = ? OR id IN " +
+                "WHERE (artist_id = ? OR year = ? OR id IN " +
                 "(SELECT album_id FROM album_genres WHERE genre_id IN " +
                 "(SELECT genre_id FROM album_genres WHERE album_id = ?))) " +
                 "AND id != ?";
@@ -51,7 +51,7 @@ public class PlaylistGenerator {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String title = rs.getString("title");
-                int year = rs.getInt("release_year");
+                int year = rs.getInt("year");
                 int artistId = rs.getInt("artist_id");
                 Artist artist = getArtist(artistId);
                 List<Genre> genres = getAlbumGenres(id);
@@ -68,38 +68,34 @@ public class PlaylistGenerator {
         List<Album> allAlbums = getAllAlbums();
         Map<Album, Set<Album>> relatedAlbumsMap = new HashMap<>();
 
-        // Create a map of unrelated albums for each album
+        // Create a map of related albums for each album
         for (Album album : allAlbums) {
-            Set<Album> unrelatedAlbums = new HashSet<>(allAlbums);
-            unrelatedAlbums.remove(album);
             List<Album> relatedAlbums = getRelatedAlbums(album);
-            unrelatedAlbums.removeAll(relatedAlbums);
+            Set<Album> unrelatedAlbums = new HashSet<>(allAlbums);
+            relatedAlbums.forEach(unrelatedAlbums::remove);
+            unrelatedAlbums.remove(album);
             relatedAlbumsMap.put(album, unrelatedAlbums);
         }
 
         List<Playlist> playlists = new ArrayList<>();
 
-        // Generate maximal playlists using a greedy algorithm
         while (!relatedAlbumsMap.isEmpty()) {
-            // Find an album with the most unrelated albums
+            Set<Album> playlistAlbums = new HashSet<>();
             Album bestAlbum = null;
             int mostUnrelated = Integer.MIN_VALUE;
+
+            // Find an album with the most unrelated albums
             for (Map.Entry<Album, Set<Album>> entry : relatedAlbumsMap.entrySet()) {
-                int unrelatedCount = 0;
-                for (Album playlistAlbum : entry.getValue()) {
-                    if (relatedAlbumsMap.get(playlistAlbum).contains(entry.getKey())) {
-                        unrelatedCount++;
-                    }
-                }
+                int unrelatedCount = entry.getValue().size();
                 if (unrelatedCount > mostUnrelated) {
                     bestAlbum = entry.getKey();
                     mostUnrelated = unrelatedCount;
                 }
             }
 
-            // Create a new playlist with the best album
-            Set<Album> playlistAlbums = new HashSet<>();
+            // Add the best album and all unrelated albums to a playlist
             playlistAlbums.add(bestAlbum);
+            playlistAlbums.addAll(relatedAlbumsMap.get(bestAlbum));
             Playlist playlist = new Playlist(UUID.randomUUID().toString(), LocalDateTime.now(), playlistAlbums);
             playlists.add(playlist);
 
@@ -114,6 +110,8 @@ public class PlaylistGenerator {
     }
 
 
+
+
     private List<Album> getAllAlbums() throws SQLException {
         List<Album> albums = new ArrayList<>();
 
@@ -123,7 +121,7 @@ public class PlaylistGenerator {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String title = rs.getString("title");
-                int year = rs.getInt("release_year");
+                int year = rs.getInt("year");
                 int artistId = rs.getInt("artist_id");
                 Artist artist = getArtist(artistId);
 
@@ -146,4 +144,5 @@ public class PlaylistGenerator {
             return null;
         }
     }
+
 }

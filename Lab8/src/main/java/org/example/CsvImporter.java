@@ -96,7 +96,6 @@ public class CsvImporter {
             }
 
 
-            conn.commit();
             System.out.println("Data inserted successfully!");
         } catch (SQLException e) {
             // Catch any SQL exception
