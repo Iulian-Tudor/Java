@@ -9,13 +9,13 @@ public class Test {
 
     public static void main(String[] args) {
         ArtistRepository artistRepository = new ArtistRepository();
-        Artist artist = new Artist("The Beatles");
+        Artist artist = new Artist("Test");
         artistRepository.create(artist);
 
         Artist retrievedArtist = artistRepository.findById(artist.getId());
         System.out.println(retrievedArtist.getName());
 
-        List<Artist> artists = artistRepository.findByName("Beatles");
+        List<Artist> artists = artistRepository.findByName("Test");
         for (Artist a : artists) {
             System.out.println(a.getName());
         }
